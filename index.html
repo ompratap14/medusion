@@ -94,7 +94,7 @@
   /* ---------- HERO ---------- */
   .hero{padding:150px 0 40px;position:relative;overflow:hidden;background:linear-gradient(160deg,#eef5fb 0%,#e4f0f9 60%,#dcebf6 100%)}
   .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
-  .hero-bg svg{width:100%;height:100%;display:block}
+  .hero-bg svg,.hero-bg-m svg{width:100%;height:100%;display:block}
   .hero-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;
     background:linear-gradient(100deg, #eef5fb 0%, rgba(238,245,251,.92) 30%, rgba(238,245,251,.45) 58%, rgba(238,245,251,.05) 82%, rgba(238,245,251,0) 100%)}
   .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center;position:relative;z-index:2}
@@ -223,10 +223,16 @@
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
   .reveal.in{opacity:1;transform:none}
 
+  /* mobile hero background is hidden on desktop */
+  .hero-bg-m{display:none;position:absolute;inset:0;z-index:0;pointer-events:none}
+
   @media(max-width:960px){
+    .hero{padding:112px 0 34px}
     .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
-    .hero-visual{order:-1;margin-bottom:6px}
-    .hero-overlay{background:linear-gradient(180deg, rgba(238,245,251,.30) 0%, rgba(238,245,251,.72) 45%, #eef5fb 82%)}
+    .hero-visual{order:-1;margin-bottom:10px}
+    .hero-logo{width:min(52%,240px)}
+    .hero-overlay{background:linear-gradient(180deg, rgba(238,245,251,.28) 0%, rgba(238,245,251,.68) 46%, #eef5fb 84%)}
+    .hero h1{margin:18px 0 16px}
     .prod-grid,.why-grid,.steps{grid-template-columns:repeat(2,1fr)}
     .step:not(:last-child)::after{display:none}
     .foot-grid{grid-template-columns:1fr 1fr}
@@ -237,9 +243,31 @@
     .menu-toggle{display:block}
     .header-cta{display:none}
     .prod-grid,.why-grid,.steps,.foot-grid{grid-template-columns:1fr}
-    .band{padding:56px 0}
-    .why{padding:40px 26px}
-    .contact-panel,.contact-actions{padding:30px}
+    .band{padding:52px 0}
+    .why{padding:38px 24px}
+    .contact-panel,.contact-actions{padding:28px}
+
+    /* ---- mobile hero ---- */
+    .hero{padding:100px 0 30px;min-height:auto}
+    .hero-bg{display:none}
+    .hero-bg-m{display:block}
+    .hero-overlay{background:linear-gradient(180deg, rgba(238,245,251,.20) 0%, rgba(238,245,251,.55) 40%, rgba(238,245,251,.92) 66%, #eef5fb 100%)}
+    .wrap{padding:0 20px}
+    .hero-grid{gap:4px;text-align:center}
+    .hero-visual{margin-bottom:4px}
+    .hero-logo{width:150px;box-shadow:0 24px 54px -24px rgba(11,37,69,.5), inset 0 0 0 1px rgba(255,255,255,.6)}
+    .pill{font-size:12px;padding:7px 14px;margin:0 auto}
+    .hero h1{font-size:33px;margin:14px 0 12px;letter-spacing:-.025em}
+    .hero p.lead{font-size:15.5px;max-width:38ch;margin:0 auto 22px}
+    .hero-cta{flex-direction:column;gap:11px;align-items:stretch}
+    .hero-cta .btn{width:100%;justify-content:center;padding:15px 20px;font-size:15.5px}
+    .hero-meta{gap:0;margin-top:26px;justify-content:space-around;
+      background:rgba(255,255,255,.66);border:1px solid var(--line);border-radius:16px;
+      padding:16px 8px;box-shadow:var(--shadow-sm);backdrop-filter:blur(6px)}
+    .hero-meta div{align-items:center;flex:1;position:relative}
+    .hero-meta div+div::before{content:"";position:absolute;left:0;top:14%;height:72%;width:1px;background:var(--line)}
+    .hero-meta b{font-size:18px}
+    .hero-meta span{font-size:11.5px;margin-top:2px}
   }
   @media(prefers-reduced-motion:reduce){
     *{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto}
@@ -372,6 +400,67 @@
         <!-- faint pulse line sweeping low -->
         <path d="M780,700 L1000,700 L1030,660 L1060,740 L1090,620 L1120,720 L1150,700 L1440,700"
               fill="none" stroke="#0d7fc0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".35"/>
+      </svg>
+    </div>
+    <div class="hero-bg-m" aria-hidden="true">
+      <svg viewBox="0 0 420 760" preserveAspectRatio="xMidYMin slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="mGlowA" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#19a6d4" stop-opacity=".28"/><stop offset="100%" stop-color="#19a6d4" stop-opacity="0"/></radialGradient>
+          <radialGradient id="mGlowB" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#123f86" stop-opacity=".22"/><stop offset="100%" stop-color="#123f86" stop-opacity="0"/></radialGradient>
+          <radialGradient id="mGlowG" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#2f924f" stop-opacity=".16"/><stop offset="100%" stop-color="#2f924f" stop-opacity="0"/></radialGradient>
+          <linearGradient id="mCapA" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#19a6d4"/><stop offset="48%" stop-color="#0d7fc0"/>
+            <stop offset="49.6%" stop-color="#fff"/><stop offset="50.6%" stop-color="#fff"/>
+            <stop offset="52%" stop-color="#123f86"/><stop offset="100%" stop-color="#0c336e"/>
+          </linearGradient>
+          <linearGradient id="mCapB" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#63c4e8"/><stop offset="48%" stop-color="#19a6d4"/>
+            <stop offset="49.6%" stop-color="#fff"/><stop offset="50.6%" stop-color="#fff"/>
+            <stop offset="52%" stop-color="#0d7fc0"/><stop offset="100%" stop-color="#123f86"/>
+          </linearGradient>
+          <linearGradient id="mCapC" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#3aa85c"/><stop offset="48%" stop-color="#2f924f"/>
+            <stop offset="49.6%" stop-color="#fff"/><stop offset="50.6%" stop-color="#fff"/>
+            <stop offset="52%" stop-color="#0d7fc0"/><stop offset="100%" stop-color="#123f86"/>
+          </linearGradient>
+          <radialGradient id="mTab" cx="38%" cy="32%" r="75%"><stop offset="0%" stop-color="#eaf6fd"/><stop offset="55%" stop-color="#b9e0f4"/><stop offset="100%" stop-color="#7cc3e6"/></radialGradient>
+          <filter id="mSoft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6"/></filter>
+        </defs>
+
+        <circle cx="70" cy="120" r="200" fill="url(#mGlowA)"/>
+        <circle cx="360" cy="300" r="220" fill="url(#mGlowB)"/>
+        <circle cx="210" cy="60" r="170" fill="url(#mGlowG)"/>
+
+        <!-- molecule top-right -->
+        <g stroke="#0d7fc0" stroke-width="2.6" opacity=".4">
+          <line x1="330" y1="70" x2="392" y2="52"/><line x1="330" y1="70" x2="312" y2="132"/>
+          <line x1="392" y1="52" x2="418" y2="118"/><line x1="312" y1="132" x2="372" y2="158"/>
+        </g>
+        <g fill="#0d7fc0" opacity=".62">
+          <circle cx="330" cy="70" r="9"/><circle cx="392" cy="52" r="10"/><circle cx="312" cy="132" r="8"/>
+          <circle cx="418" cy="118" r="8"/><circle cx="372" cy="158" r="7" fill="#2f924f"/>
+        </g>
+
+        <!-- soft background capsule -->
+        <g opacity=".45" filter="url(#mSoft)"><g transform="translate(70,300) rotate(-32)"><rect x="-70" y="-22" width="140" height="44" rx="22" fill="url(#mCapB)"/></g></g>
+
+        <!-- foreground capsules -->
+        <g transform="translate(58,110) rotate(34)">
+          <rect x="-66" y="-21" width="132" height="42" rx="21" fill="url(#mCapC)"/>
+          <rect x="-58" y="-16" width="52" height="11" rx="6" fill="#fff" opacity=".35"/>
+        </g>
+        <g transform="translate(360,210) rotate(-20)">
+          <rect x="-70" y="-22" width="140" height="44" rx="22" fill="url(#mCapA)"/>
+          <rect x="-62" y="-17" width="54" height="11" rx="6" fill="#fff" opacity=".35"/>
+        </g>
+
+        <!-- tablets -->
+        <g><circle cx="66" cy="240" r="30" fill="url(#mTab)" stroke="#8fcdea" stroke-width="1.8"/><line x1="66" y1="214" x2="66" y2="266" stroke="#7cbadd" stroke-width="2"/></g>
+        <g opacity=".92"><circle cx="356" cy="120" r="24" fill="url(#mTab)" stroke="#8fcdea" stroke-width="1.8"/><line x1="335" y1="120" x2="377" y2="120" stroke="#7cbadd" stroke-width="2"/></g>
+
+        <!-- pulse line -->
+        <path d="M0,330 L120,330 L145,300 L170,362 L195,286 L220,352 L245,330 L420,330"
+              fill="none" stroke="#0d7fc0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" opacity=".32"/>
       </svg>
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
